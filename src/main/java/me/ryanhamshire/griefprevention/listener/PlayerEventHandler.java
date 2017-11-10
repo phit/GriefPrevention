@@ -2411,8 +2411,8 @@ public class PlayerEventHandler {
                     createClaimLimit = GPOptionHandler.getClaimOptionDouble(player, parentClaim, GPOptions.Type.CLAIM_LIMIT, playerData).intValue();
                 }
 
-                if (createClaimLimit > 0 &&
-                        (playerData.getInternalClaims().size() + 1) >= playerData.optionCreateClaimLimitBasic) {
+                if (createClaimLimit > 0 && playerData.getInternalClaims().size() >= createClaimLimit &&
+                        playerData.getInternalClaims().size() != 0) {
                     GriefPreventionPlugin.sendMessage(player, GriefPreventionPlugin.instance.messageData.claimCreateFailedLimit.toText());
                     GPTimings.PLAYER_HANDLE_SHOVEL_ACTION.stopTimingIfSync();
                     return;
